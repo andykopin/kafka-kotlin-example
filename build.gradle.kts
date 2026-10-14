@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.4.20"
+    alias(libs.plugins.kotlin.jvm)
 }
 
 group = "com.kopin"
@@ -10,7 +10,15 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.kafka.clients)
+
     testImplementation(kotlin("test"))
+    testImplementation(platform(libs.testcontainers.bom))
+    testImplementation(libs.testcontainers.kafka)
+    testImplementation(libs.testcontainers.junit.jupiter)
+    testImplementation(libs.kotest.assertions.core)
+    testImplementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
 
 kotlin {
